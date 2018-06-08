@@ -80,4 +80,18 @@ get '/lunch-hash' do
     
 end
 
+get '/randomgame:name' do
+    random = ["부","결혼운", "명예","인간관계" ]
+    random_txt = {
+        "부" => "당신은 재벌이 될 것입니다.",
+        "결혼운" => "당신은 곧 결혼할 사람이 나타날거에요",
+        "명예" => "당신은 명예를 얻을거에요",
+        "인간관계" => "프로젝트 혼자서 하게 될거에요"
+    }
+    @name = params[:name]
+    @random_result = random.sample
+    @random_txt = random_txt[@random_result]
+    
+    erb :future
+end
 
